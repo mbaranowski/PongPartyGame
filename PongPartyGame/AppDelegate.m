@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "StartScreenViewController.h"
+#import "PongGameViewController.h"
 
 @implementation AppDelegate
 
@@ -15,8 +16,10 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    StartScreenViewController* startScreen = [[StartScreenViewController alloc] init];
-    UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:startScreen];
+    //StartScreenViewController* viewController = [[StartScreenViewController alloc] init];
+    PongGameViewController* viewController = [[PongGameViewController alloc] init];
+    
+    UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
     navigationController.navigationBarHidden = TRUE;
     
     self.window.rootViewController = navigationController;

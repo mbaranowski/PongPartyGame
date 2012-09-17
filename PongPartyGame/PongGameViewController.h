@@ -7,14 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GLKit/GLKVector2.h>
 
-@interface PongGameViewController : UIViewController
+@interface PongGameViewController : UIViewController <UIGestureRecognizerDelegate>
 {
     UIImageView* m_ball;
     UIView* m_paddleLeft;
     UIView* m_paddleRight;
-    UILabel* m_scoreLeftLeft;
-    UILabel* m_scoreRightLeft;
+    UILabel* m_scoreLeftLabel;
+    UILabel* m_scoreRightLabel;
     
     UIImageView* m_centerLine;
     
@@ -22,7 +23,13 @@
     int m_scoreRight;
     
     GLKVector2 ballDirection;
+    GLKVector2 startDirection;
     CGFloat ballVelocity;
+    CGFloat startVelocity;
+    CGFloat frameRate;
+    int numBalls;
+    
+    NSTimer* updateTimer;
 }
 
 

@@ -37,9 +37,17 @@
     NSString *deviceType = [UIDevice currentDevice].model;
     NSLog(@"device type %@", deviceType);
     
-    CGFloat verticalPos = 50.0f;
+    
+    BOOL isIPad = [deviceType hasPrefix:@"iPad"];
+    CGFloat verticalMargin = isIPad ? 50 : 20;
+    CGFloat logoFontSize = isIPad ? 100 : 50;
+    CGFloat buttonFontSize = isIPad ? 50 : 25;
+    
+    
+    
+    CGFloat verticalPos = verticalMargin;
     NSString* logoStr = @"PONG";
-    UIFont* logoFont = [UIFont fontWithName:@"Futura-Medium" size:100];
+    UIFont* logoFont = [UIFont fontWithName:@"Futura-Medium" size:logoFontSize];
     CGSize logoSize = [logoStr sizeWithFont:logoFont];
     m_logoLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, logoSize.width, logoSize.height)];
     m_logoLabel.backgroundColor = [UIColor clearColor];
@@ -50,14 +58,14 @@
     m_logoLabel.text = logoStr;
     [self.view addSubview:m_logoLabel];
     
-    verticalPos += logoSize.height + 50;
+    verticalPos += logoSize.height + verticalMargin;
     
     
-    UIFont* buttonFont = [UIFont fontWithName:@"Futura-Medium" size:50];
+    UIFont* buttonFont = [UIFont fontWithName:@"Futura-Medium" size:buttonFontSize];
     m_startGameButton = [self buttonWithString:@"Start Game" andFont:buttonFont];
     m_startGameButton.center = CGPointMake(viewSize.width/2, verticalPos + m_startGameButton.bounds.size.height/2);
     [m_startGameButton addTarget:self action:@selector(onStartGame:) forControlEvents:UIControlEventTouchUpInside];
-    verticalPos += m_startGameButton.bounds.size.height + 50;
+    verticalPos += m_startGameButton.bounds.size.height + verticalMargin;
 
 }
 
