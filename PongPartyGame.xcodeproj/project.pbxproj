@@ -13,6 +13,10 @@
 		9C0ABB2A16076E9F0097B134 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C0ABB2816076E9F0097B134 /* InfoPlist.strings */; };
 		9C0ABB2C16076E9F0097B134 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0ABB2B16076E9F0097B134 /* main.m */; };
 		9C0ABB3016076E9F0097B134 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0ABB2F16076E9F0097B134 /* AppDelegate.m */; };
+		9C0ABB38160770690097B134 /* StartScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0ABB37160770690097B134 /* StartScreenViewController.m */; };
+		9C0ABB3B160770870097B134 /* PongGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0ABB3A160770870097B134 /* PongGameViewController.m */; };
+		9C0ABB3D16077B680097B134 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C0ABB3C16077B680097B134 /* GameKit.framework */; };
+		9C0ABB3F16077B6F0097B134 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C0ABB3E16077B6F0097B134 /* GLKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,12 @@
 		9C0ABB2D16076E9F0097B134 /* PongPartyGame-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PongPartyGame-Prefix.pch"; sourceTree = "<group>"; };
 		9C0ABB2E16076E9F0097B134 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9C0ABB2F16076E9F0097B134 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9C0ABB36160770690097B134 /* StartScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartScreenViewController.h; sourceTree = "<group>"; };
+		9C0ABB37160770690097B134 /* StartScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartScreenViewController.m; sourceTree = "<group>"; };
+		9C0ABB39160770870097B134 /* PongGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PongGameViewController.h; path = ../PongGameViewController.h; sourceTree = "<group>"; };
+		9C0ABB3A160770870097B134 /* PongGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PongGameViewController.m; path = ../PongGameViewController.m; sourceTree = "<group>"; };
+		9C0ABB3C16077B680097B134 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		9C0ABB3E16077B6F0097B134 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +43,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C0ABB3F16077B6F0097B134 /* GLKit.framework in Frameworks */,
+				9C0ABB3D16077B680097B134 /* GameKit.framework in Frameworks */,
 				9C0ABB2016076E9F0097B134 /* UIKit.framework in Frameworks */,
 				9C0ABB2216076E9F0097B134 /* Foundation.framework in Frameworks */,
 				9C0ABB2416076E9F0097B134 /* CoreGraphics.framework in Frameworks */,
@@ -62,6 +74,8 @@
 		9C0ABB1E16076E9F0097B134 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9C0ABB3C16077B680097B134 /* GameKit.framework */,
+				9C0ABB3E16077B6F0097B134 /* GLKit.framework */,
 				9C0ABB1F16076E9F0097B134 /* UIKit.framework */,
 				9C0ABB2116076E9F0097B134 /* Foundation.framework */,
 				9C0ABB2316076E9F0097B134 /* CoreGraphics.framework */,
@@ -75,6 +89,10 @@
 				9C0ABB2E16076E9F0097B134 /* AppDelegate.h */,
 				9C0ABB2F16076E9F0097B134 /* AppDelegate.m */,
 				9C0ABB2616076E9F0097B134 /* Supporting Files */,
+				9C0ABB36160770690097B134 /* StartScreenViewController.h */,
+				9C0ABB37160770690097B134 /* StartScreenViewController.m */,
+				9C0ABB39160770870097B134 /* PongGameViewController.h */,
+				9C0ABB3A160770870097B134 /* PongGameViewController.m */,
 			);
 			path = PongPartyGame;
 			sourceTree = "<group>";
@@ -154,6 +172,8 @@
 			files = (
 				9C0ABB2C16076E9F0097B134 /* main.m in Sources */,
 				9C0ABB3016076E9F0097B134 /* AppDelegate.m in Sources */,
+				9C0ABB38160770690097B134 /* StartScreenViewController.m in Sources */,
+				9C0ABB3B160770870097B134 /* PongGameViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
