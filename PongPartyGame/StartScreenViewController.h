@@ -10,11 +10,16 @@
 
 @interface StartScreenViewController : UIViewController
 {
-    UILabel* m_logoLabel;
+    UILabel* logoLabel;
     UIButton* m_startGameButton;
+    UIScreen* m_screen;
+    StartScreenViewController* __weak connectedController;
 }
 
-@property (strong, nonatomic) UILabel* m_logoLabel;
+@property (strong, nonatomic) UILabel* logoLabel;
 @property (strong, nonatomic) UIButton* m_startGameButton;
+@property (weak, nonatomic) StartScreenViewController* connectedController;
+
+-(id)initWithScreen:(UIScreen*)screen;
 
 @end

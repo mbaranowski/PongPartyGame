@@ -13,20 +13,56 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+{    
+    self.windows = [NSMutableArray arrayWithCapacity:2];
+    NSArray* screens = [UIScreen screens];
+    StartScreenViewController* mainStartScreen = nil;
+    for (UIScreen* screen in screens)
+    {
+        BOOL isMainScreen = (screen == [UIScreen mainScreen]);
+        UIWindow* window = [self createWindowForScreen:screen];
+        
+        StartScreenViewController* viewController = [[StartScreenViewController alloc] initWithScreen:screen];
+        UINavigationController* navController = [[UINavigationController alloc] initWithRootViewController:viewController];
+        navController.navigationBarHidden = TRUE;
+        
+        [self addViewController:navController toWindow:window];
+        
+        if (isMainScreen) {
+            [window makeKeyAndVisible];
+            mainStartScreen = viewController;
+        }
+        else {
+            mainStartScreen.connectedController = viewController;
+        }
+    }
 
-    //StartScreenViewController* viewController = [[StartScreenViewController alloc] init];
-    PongGameViewController* viewController = [[PongGameViewController alloc] init];
-    
-    UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
-    navigationController.navigationBarHidden = TRUE;
-    
-    self.window.rootViewController = navigationController;
-    
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
     return YES;
+}
+
+-(UIWindow*)createWindowForScreen:(UIScreen*)screen
+{
+    UIWindow* w = nil;
+    for (UIWindow* window in self.windows)
+    {
+        if (window.screen == screen) {
+            w = window;
+        }
+    }
+    
+    if (w == nil) {
+        w = [[UIWindow alloc] initWithFrame:screen.bounds];
+        [w setScreen:screen];
+        [self.windows addObject:w];
+    }
+    
+    return w;
+}
+
+-(void)addViewController:(UIViewController*)controller toWindow:(UIWindow*)window
+{
+    [window setRootViewController:controller];
+    window.hidden = NO;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

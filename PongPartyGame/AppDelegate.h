@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
+{
+    NSMutableArray* windows;
+}
 
+@property (strong, nonatomic) NSMutableArray* windows;
 @property (strong, nonatomic) UIWindow *window;
 
 @end

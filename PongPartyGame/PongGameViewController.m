@@ -13,6 +13,22 @@
 @end
 
 @implementation PongGameViewController
+@synthesize connectedController;
+@synthesize m_ball;
+@synthesize m_paddleLeft;
+@synthesize m_paddleRight;
+@synthesize m_scoreLeftLabel;
+@synthesize m_scoreRightLabel;
+
+-(id)initWithMode:(enum PongGameMode)inMode andScreen:(UIScreen*)inScreen
+{
+    if (self = [super init])
+    {
+        gameMode = inMode;
+        screen = inScreen;
+    }
+    return self;
+}
 
 -(UIImage*)ballImageWithSize:(CGSize)size
 {
@@ -65,10 +81,18 @@
 
 -(void)loadView
 {
-    self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    self.view = [[UIView alloc] initWithFrame:[screen bounds]];
     self.view.backgroundColor = [UIColor blackColor];
     
-    CGSize viewSize = self.view.bounds.size;
+    //CGSize viewSize = self.view.bounds.size;
+    CGSize viewSize;
+    if ([UIScreen mainScreen] == screen)
+        viewSize = CGSizeMake( self.view.bounds.size.height, self.view.bounds.size.width);
+    else
+        viewSize = self.view.bounds.size;
+
+
     
     CGSize paddleSize = CGSizeMake(20,120);
     CGFloat paddleMargin = 50;
@@ -76,17 +100,17 @@
     CGSize scoreMargin = CGSizeMake(50, 50);
     
     m_paddleLeft = [[UIView alloc] initWithFrame:CGRectMake(0, 0, paddleSize.width, paddleSize.height)];
-    m_paddleLeft.center = CGPointMake(paddleMargin, viewSize.width/2);
+    m_paddleLeft.center = CGPointMake(paddleMargin, viewSize.height/2);
     m_paddleLeft.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:m_paddleLeft];
      
     m_paddleRight = [[UIView alloc] initWithFrame:CGRectMake(0, 0, paddleSize.width, paddleSize.height)];
-    m_paddleRight.center = CGPointMake(viewSize.height-paddleMargin, viewSize.width/2);
+    m_paddleRight.center = CGPointMake(viewSize.width-paddleMargin, viewSize.height/2);
     m_paddleRight.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:m_paddleRight];
     
-    m_centerLine = [[UIImageView alloc] initWithImage:[self centerLineWithSize:CGSizeMake(10, viewSize.width)]];
-    m_centerLine.center = CGPointMake(viewSize.height/2, viewSize.width/2);
+    m_centerLine = [[UIImageView alloc] initWithImage:[self centerLineWithSize:CGSizeMake(10, viewSize.height)]];
+    m_centerLine.center = CGPointMake(viewSize.width/2, viewSize.height/2);
     [self.view addSubview:m_centerLine];
     
     UIFont* scoreFont = [UIFont fontWithName:@"Futura-Medium" size:scoreFontSize];
@@ -97,38 +121,50 @@
 
     m_scoreRightLabel = [self scoreLabelWithFont:scoreFont];
     m_scoreRightLabel.center = CGPointMake(
-        viewSize.height - m_scoreRightLabel.bounds.size.width/2 - scoreMargin.width,
+        viewSize.width - m_scoreRightLabel.bounds.size.width/2 - scoreMargin.width,
         m_scoreRightLabel.bounds.size.height/2 + scoreMargin.height);
     
     m_ball = [[UIImageView alloc] initWithImage:[self ballImageWithSize:CGSizeMake(24, 24)]];
     m_ball.center = CGPointMake(viewSize.width/2, viewSize.height/2);
     m_ball.backgroundColor = [UIColor clearColor];
     m_ball.hidden = YES;
+    
     [self.view addSubview:m_ball];
     
-    UIPanGestureRecognizer* panLeft = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesture:)];
-    panLeft.minimumNumberOfTouches = 1;
-    panLeft.maximumNumberOfTouches = 1;
-    [m_paddleLeft addGestureRecognizer:panLeft];
+    if (gameMode == LocalMultiplayer)
+    {
+        UIPanGestureRecognizer* panLeft = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesture:)];
+        panLeft.minimumNumberOfTouches = 1;
+        panLeft.maximumNumberOfTouches = 1;
+        [m_paddleLeft addGestureRecognizer:panLeft];
     
-    UIPanGestureRecognizer* panRight = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesture:)];
-    panRight.minimumNumberOfTouches = 1;
-    panRight.maximumNumberOfTouches = 1;
-    [m_paddleRight addGestureRecognizer:panRight];
+        UIPanGestureRecognizer* panRight = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesture:)];
+        panRight.minimumNumberOfTouches = 1;
+        panRight.maximumNumberOfTouches = 1;
+        [m_paddleRight addGestureRecognizer:panRight];
+        
+        [self initGame];
+        
+        [NSTimer scheduledTimerWithTimeInterval:0.5f target:self selector:@selector(initNewRound:) userInfo:nil repeats:NO];
+    }
     
-    frameRate = 1.0f / 60.0f;
 
+}
+
+-(void)initGame
+{
+    frameRate = 1.0f / 60.0f;
     startVelocity = 5.0f;
     startDirection = GLKVector2Normalize( GLKVector2Make(4, 4) );
     ballVelocity = startVelocity - 0.5f;
     numBalls = 0;
-
-    [NSTimer scheduledTimerWithTimeInterval:0.5f target:self selector:@selector(initGameState:) userInfo:nil repeats:NO];
 }
 
--(void)initGameState:(NSTimer*)timer
+-(void)initNewRound:(NSTimer*)timer
 {
     m_ball.hidden = NO;
+    if (self.connectedController) self.connectedController.m_ball.hidden = NO;
+
     m_ball.center = CGPointMake( CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds) );
     
     numBalls += 1;
@@ -223,20 +259,31 @@
     if (newPos.x < -ballHalfSize.width) {
         m_scoreRight += 1;
         m_scoreRightLabel.text = [NSString stringWithFormat:@"%d", m_scoreRight];
+        if (self.connectedController != nil) {
+            self.connectedController.m_scoreRightLabel.text = m_scoreRightLabel.text;
+        }
         resetGame = YES;
     }
     
     if (newPos.x > gameBounds.width + ballHalfSize.width) {
         m_scoreLeft += 1;
         m_scoreLeftLabel.text = [NSString stringWithFormat:@"%d", m_scoreLeft];
+        if (self.connectedController != nil) {
+            self.connectedController.m_scoreLeftLabel.text = m_scoreLeftLabel.text;
+        }
         resetGame = YES;
     }
 
     if (resetGame) {
         [updateTimer invalidate];
         updateTimer = nil;
-        
-        [NSTimer scheduledTimerWithTimeInterval:0.5f target:self selector:@selector(initGameState:) userInfo:nil repeats:NO];
+        [NSTimer scheduledTimerWithTimeInterval:0.5f target:self selector:@selector(initNewRound:) userInfo:nil repeats:NO];
+    }
+    
+    if (self.connectedController != nil) {
+        self.connectedController.m_ball.center = m_ball.center;
+        self.connectedController.m_paddleLeft.center = m_paddleLeft.center;
+        self.connectedController.m_paddleRight.center = m_paddleRight.center;
     }
 }
 

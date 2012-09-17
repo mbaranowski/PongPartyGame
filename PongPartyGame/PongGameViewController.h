@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <GLKit/GLKVector2.h>
 
+enum PongGameMode {
+    LocalMultiplayer,
+    SecondaryDisplay
+};
+
 @interface PongGameViewController : UIViewController <UIGestureRecognizerDelegate>
 {
     UIImageView* m_ball;
@@ -30,7 +35,20 @@
     int numBalls;
     
     NSTimer* updateTimer;
+    UIScreen* screen;
+    enum PongGameMode gameMode;
+    
+    PongGameViewController* __weak connectedController;
 }
 
+@property (strong, nonatomic) UIImageView* m_ball;
+@property (strong, nonatomic) UIView* m_paddleLeft;
+@property (strong, nonatomic) UIView* m_paddleRight;
+@property (strong, nonatomic) UILabel* m_scoreLeftLabel;
+@property (strong, nonatomic) UILabel* m_scoreRightLabel;
+
+@property (weak, nonatomic) PongGameViewController*  connectedController;
+
+-(id)initWithMode:(enum PongGameMode)mode andScreen:(UIScreen*)screen;
 
 @end
