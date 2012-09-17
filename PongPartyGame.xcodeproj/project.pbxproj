@@ -1,0 +1,270 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9C0ABB2016076E9F0097B134 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C0ABB1F16076E9F0097B134 /* UIKit.framework */; };
+		9C0ABB2216076E9F0097B134 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C0ABB2116076E9F0097B134 /* Foundation.framework */; };
+		9C0ABB2416076E9F0097B134 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C0ABB2316076E9F0097B134 /* CoreGraphics.framework */; };
+		9C0ABB2A16076E9F0097B134 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C0ABB2816076E9F0097B134 /* InfoPlist.strings */; };
+		9C0ABB2C16076E9F0097B134 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0ABB2B16076E9F0097B134 /* main.m */; };
+		9C0ABB3016076E9F0097B134 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0ABB2F16076E9F0097B134 /* AppDelegate.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9C0ABB1B16076E9F0097B134 /* PongPartyGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PongPartyGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C0ABB1F16076E9F0097B134 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9C0ABB2116076E9F0097B134 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9C0ABB2316076E9F0097B134 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9C0ABB2716076E9F0097B134 /* PongPartyGame-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PongPartyGame-Info.plist"; sourceTree = "<group>"; };
+		9C0ABB2916076E9F0097B134 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9C0ABB2B16076E9F0097B134 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9C0ABB2D16076E9F0097B134 /* PongPartyGame-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PongPartyGame-Prefix.pch"; sourceTree = "<group>"; };
+		9C0ABB2E16076E9F0097B134 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		9C0ABB2F16076E9F0097B134 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9C0ABB1816076E9F0097B134 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C0ABB2016076E9F0097B134 /* UIKit.framework in Frameworks */,
+				9C0ABB2216076E9F0097B134 /* Foundation.framework in Frameworks */,
+				9C0ABB2416076E9F0097B134 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9C0ABB1016076E9F0097B134 = {
+			isa = PBXGroup;
+			children = (
+				9C0ABB2516076E9F0097B134 /* PongPartyGame */,
+				9C0ABB1E16076E9F0097B134 /* Frameworks */,
+				9C0ABB1C16076E9F0097B134 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9C0ABB1C16076E9F0097B134 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9C0ABB1B16076E9F0097B134 /* PongPartyGame.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9C0ABB1E16076E9F0097B134 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9C0ABB1F16076E9F0097B134 /* UIKit.framework */,
+				9C0ABB2116076E9F0097B134 /* Foundation.framework */,
+				9C0ABB2316076E9F0097B134 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9C0ABB2516076E9F0097B134 /* PongPartyGame */ = {
+			isa = PBXGroup;
+			children = (
+				9C0ABB2E16076E9F0097B134 /* AppDelegate.h */,
+				9C0ABB2F16076E9F0097B134 /* AppDelegate.m */,
+				9C0ABB2616076E9F0097B134 /* Supporting Files */,
+			);
+			path = PongPartyGame;
+			sourceTree = "<group>";
+		};
+		9C0ABB2616076E9F0097B134 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9C0ABB2716076E9F0097B134 /* PongPartyGame-Info.plist */,
+				9C0ABB2816076E9F0097B134 /* InfoPlist.strings */,
+				9C0ABB2B16076E9F0097B134 /* main.m */,
+				9C0ABB2D16076E9F0097B134 /* PongPartyGame-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9C0ABB1A16076E9F0097B134 /* PongPartyGame */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9C0ABB3316076E9F0097B134 /* Build configuration list for PBXNativeTarget "PongPartyGame" */;
+			buildPhases = (
+				9C0ABB1716076E9F0097B134 /* Sources */,
+				9C0ABB1816076E9F0097B134 /* Frameworks */,
+				9C0ABB1916076E9F0097B134 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PongPartyGame;
+			productName = PongPartyGame;
+			productReference = 9C0ABB1B16076E9F0097B134 /* PongPartyGame.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9C0ABB1216076E9F0097B134 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = "Matthew Baranowski";
+			};
+			buildConfigurationList = 9C0ABB1516076E9F0097B134 /* Build configuration list for PBXProject "PongPartyGame" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9C0ABB1016076E9F0097B134;
+			productRefGroup = 9C0ABB1C16076E9F0097B134 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9C0ABB1A16076E9F0097B134 /* PongPartyGame */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9C0ABB1916076E9F0097B134 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C0ABB2A16076E9F0097B134 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9C0ABB1716076E9F0097B134 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C0ABB2C16076E9F0097B134 /* main.m in Sources */,
+				9C0ABB3016076E9F0097B134 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9C0ABB2816076E9F0097B134 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C0ABB2916076E9F0097B134 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9C0ABB3116076E9F0097B134 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9C0ABB3216076E9F0097B134 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9C0ABB3416076E9F0097B134 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PongPartyGame/PongPartyGame-Prefix.pch";
+				INFOPLIST_FILE = "PongPartyGame/PongPartyGame-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9C0ABB3516076E9F0097B134 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PongPartyGame/PongPartyGame-Prefix.pch";
+				INFOPLIST_FILE = "PongPartyGame/PongPartyGame-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9C0ABB1516076E9F0097B134 /* Build configuration list for PBXProject "PongPartyGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C0ABB3116076E9F0097B134 /* Debug */,
+				9C0ABB3216076E9F0097B134 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9C0ABB3316076E9F0097B134 /* Build configuration list for PBXNativeTarget "PongPartyGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C0ABB3416076E9F0097B134 /* Debug */,
+				9C0ABB3516076E9F0097B134 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9C0ABB1216076E9F0097B134 /* Project object */;
+}
