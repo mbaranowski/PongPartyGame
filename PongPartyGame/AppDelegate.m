@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "StartScreenViewController.h"
 #import "PongGameViewController.h"
+#import <GameKit/GameKit.h>
 
 @implementation AppDelegate
 
@@ -16,6 +17,9 @@
 {    
     self.windows = [NSMutableArray arrayWithCapacity:2];
     NSArray* screens = [UIScreen screens];
+    
+    [self authenticateLocalPlayer];
+    
     StartScreenViewController* mainStartScreen = nil;
     for (UIScreen* screen in screens)
     {
@@ -63,6 +67,23 @@
 {
     [window setRootViewController:controller];
     window.hidden = NO;
+}
+
+- (void) authenticateLocalPlayer
+{
+    GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
+    [localPlayer authenticateWithCompletionHandler:^(NSError *error) {
+        if (localPlayer.isAuthenticated)
+        {
+            //NSLog(@"successfully authenticated player");
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"GKLocalPlayerAuthenticated"
+                              object:self];
+
+        }
+        else {
+            NSLog(@"failed to authenticate local player %@", [error description]);
+        }
+    }];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

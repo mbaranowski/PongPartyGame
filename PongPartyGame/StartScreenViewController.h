@@ -7,17 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GameKit/GameKit.h>
 
-@interface StartScreenViewController : UIViewController
+@interface StartScreenViewController : UIViewController <GKMatchmakerViewControllerDelegate>
 {
     UILabel* logoLabel;
     UIButton* m_startGameButton;
+    UIButton* m_startMultiplayerButton;
     UIScreen* m_screen;
     StartScreenViewController* __weak connectedController;
+    CGFloat buttonFontSize;
+    CGFloat verticalPos;
 }
 
 @property (strong, nonatomic) UILabel* logoLabel;
 @property (strong, nonatomic) UIButton* m_startGameButton;
+@property (strong, nonatomic) UIButton* m_startMultiplayerButton;
+
 @property (weak, nonatomic) StartScreenViewController* connectedController;
 
 -(id)initWithScreen:(UIScreen*)screen;

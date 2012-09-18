@@ -8,19 +8,26 @@
 
 #import <UIKit/UIKit.h>
 #import <GLKit/GLKVector2.h>
+#import <GameKit/GameKit.h>
 
 enum PongGameMode {
     LocalMultiplayer,
-    SecondaryDisplay
+    SecondaryDisplay,
+    NetworkMultiplayer
 };
 
-@interface PongGameViewController : UIViewController <UIGestureRecognizerDelegate>
+@interface PongGameViewController : UIViewController <UIGestureRecognizerDelegate, GKMatchDelegate>
 {
     UIImageView* m_ball;
     UIView* m_paddleLeft;
     UIView* m_paddleRight;
     UILabel* m_scoreLeftLabel;
     UILabel* m_scoreRightLabel;
+    UIButton* m_quitGameButton;
+    
+    UILabel* m_leftPlayerNameLabel;
+    UILabel* m_rightPlayerNameLabel;
+    UIButton* m_startGameButton;
     
     UIImageView* m_centerLine;
     
@@ -35,8 +42,19 @@ enum PongGameMode {
     int numBalls;
     
     NSTimer* updateTimer;
+    
     UIScreen* screen;
     enum PongGameMode gameMode;
+    
+    // network multiplayer support
+    GKMatch* match;
+    BOOL matchStarted;
+    NSTimer* networkTimer;
+    CGFloat lastLeftPaddlePos;
+    uint32_t randomNumber;
+    BOOL isPlayerLeft;
+    BOOL receivedRandomNumber;
+    
     
     PongGameViewController* __weak connectedController;
 }
@@ -46,9 +64,11 @@ enum PongGameMode {
 @property (strong, nonatomic) UIView* m_paddleRight;
 @property (strong, nonatomic) UILabel* m_scoreLeftLabel;
 @property (strong, nonatomic) UILabel* m_scoreRightLabel;
+@property (strong, nonatomic) GKMatch* match;
 
 @property (weak, nonatomic) PongGameViewController*  connectedController;
 
 -(id)initWithMode:(enum PongGameMode)mode andScreen:(UIScreen*)screen;
+-(id)initWithMatch:(GKMatch*)match andScreen:(UIScreen*)screen;
 
 @end

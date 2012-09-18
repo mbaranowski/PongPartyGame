@@ -45,9 +45,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C0ABB3D16077B680097B134 /* GameKit.framework in Frameworks */,
 				9C34E0D81607A33E00E7374A /* MediaPlayer.framework in Frameworks */,
 				9C0ABB3F16077B6F0097B134 /* GLKit.framework in Frameworks */,
-				9C0ABB3D16077B680097B134 /* GameKit.framework in Frameworks */,
 				9C0ABB2016076E9F0097B134 /* UIKit.framework in Frameworks */,
 				9C0ABB2216076E9F0097B134 /* Foundation.framework in Frameworks */,
 				9C0ABB2416076E9F0097B134 /* CoreGraphics.framework in Frameworks */,
@@ -249,10 +249,12 @@
 		9C0ABB3416076E9F0097B134 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Baranowski (2NHTE63ATW)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PongPartyGame/PongPartyGame-Prefix.pch";
 				INFOPLIST_FILE = "PongPartyGame/PongPartyGame-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9CF23A08-B24A-47EF-ABC5-17104F0D6DE1";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
